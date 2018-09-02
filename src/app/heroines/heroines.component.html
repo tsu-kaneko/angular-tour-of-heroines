@@ -1,3 +1,15 @@
-<p>
-  heroines works!
-</p>
+<!-- <p> -->
+  <!-- heroines works! -->
+  <!-- {{heroine}} -->
+<!-- </p> -->
+
+<h2>{{heroine.name}}の情報</h2>
+<div>
+  <span>番号: </span>{{heroine.id}}
+</div>
+<div>
+  <!-- <span>名前: </span>{{heroine.name}} -->
+  <label>名前:
+		<input [(ngModel)]="heroine.name" placeholder="名前">
+	</label>
+</div>
