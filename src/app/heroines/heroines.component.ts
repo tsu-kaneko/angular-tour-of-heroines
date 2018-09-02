@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Heroine} from '../Heroine';
+import {HEROINES} from '../mock-heroines';
 
 @Component({
   selector: 'app-heroines',
@@ -8,9 +9,13 @@ import {Heroine} from '../Heroine';
 })
 export class HeroinesComponent implements OnInit {
 
-  heroine: Heroine = {
-    id: 1,
-    name: 'シータ'
+  heroines = HEROINES;
+
+  selectedHeroine: Heroine = HEROINES[0]; // 初期値
+
+  onSelect(heroine: Heroine): void {
+    this.selectedHeroine = heroine;
+    console.log(heroine);  // 確認用
   }
 
   constructor() { }
