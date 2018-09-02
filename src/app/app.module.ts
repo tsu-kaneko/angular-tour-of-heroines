@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 @NgModule({
+  // どのコンポーネントを使うか宣言
   declarations: [
     AppComponent
   ],
