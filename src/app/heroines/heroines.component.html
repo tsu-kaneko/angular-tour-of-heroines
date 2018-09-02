@@ -1,16 +1,4 @@
-<div *ngIf="selectedHeroine">
-  <h2>{{selectedHeroine.name}}の情報</h2>
-</div>
 
-<div>
-  <span>番号: </span>{{selectedHeroine.id}}
-</div>
-
-<div>
-  <label>名前:
-		<input [(ngModel)]="selectedHeroine.name" placeholder="名前">
-	</label>
-</div>
 
 <ul class="heroines">
   <li *ngFor="let heroine of heroines"
@@ -20,4 +8,5 @@
   </li>
 </ul>
 
+<app-heroine-detail [heroine]="selectedHeroine"></app-heroine-detail>
 
