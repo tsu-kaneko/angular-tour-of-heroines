@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Heroine} from '../Heroine';
-import {HEROINES} from '../mock-heroines';
+import { Heroine } from '../Heroine';
+import { HeroineService } from '../heroine.service';
 
 @Component({
   selector: 'app-heroines',
@@ -9,18 +9,23 @@ import {HEROINES} from '../mock-heroines';
 })
 export class HeroinesComponent implements OnInit {
 
-  heroines = HEROINES;
+  heroines: Heroine[];
+  selectedHeroine: Heroine;
 
-  selectedHeroine: Heroine = HEROINES[0]; // 初期値
+  constructor(private heroineService: HeroineService) { }
+
+  ngOnInit() {
+    this.getHeroines();
+  }
+
+  getHeroines(): void {
+    this.heroineService.getHeroines()
+      .subscribe(heroines => this.heroines = heroines);
+  }
 
   onSelect(heroine: Heroine): void {
     this.selectedHeroine = heroine;
-    console.log(heroine);  // 確認用
-  }
-
-  constructor() { }
-
-  ngOnInit() {
+    console.log(heroine);
   }
 
 }
