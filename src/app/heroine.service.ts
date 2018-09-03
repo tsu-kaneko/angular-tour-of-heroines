@@ -16,4 +16,9 @@ export class HeroineService {
     console.log(this.messageService);
     return of(HEROINES);
   }
+
+  getHeroine(id: number): Observable<Heroine> {
+    this.messageService.add(`HeroineService: 番号${id}のデータを取得`);
+    return of(HEROINES.find(heroine => heroine.id === id));
+  }
 }

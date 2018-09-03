@@ -1,12 +1,14 @@
 
-
+<h2>ヒロインリスト</h2>
 <ul class="heroines">
-  <li *ngFor="let heroine of heroines"
-      [class.selected]="heroine === selectedHeroine"
-      (click)="onSelect(heroine)">
-    <span class="badge">{{heroine.id}}</span> {{heroine.name}}
+  <li *ngFor="let heroine of heroines">
+      <!--[class.selected]="heroine === selectedHeroine"-->
+      <!--(click)="onSelect(heroine)">-->
+    <a routerLink="/detail/{{heroine.id}}">
+      <span class="badge">{{heroine.id}}</span> {{heroine.name}}
+    </a>
   </li>
 </ul>
 
-<app-heroine-detail [heroine]="selectedHeroine"></app-heroine-detail>
+<!--<app-heroine-detail [heroine]="selectedHeroine"></app-heroine-detail>-->
 

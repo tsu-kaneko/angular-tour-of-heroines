@@ -1,6 +1,7 @@
 <h3>トップヒロイン</h3>
 <div class="grid grid-pad">
-  <a *ngFor="let heroine of heroines" class="col-1-4">
+  <a *ngFor="let heroine of heroines" class="col-1-4"
+     routerLink="/detail/{{heroine.id}}">
     <div class="module heroine">
       <h4>{{heroine.name}}</h4>
     </div>
