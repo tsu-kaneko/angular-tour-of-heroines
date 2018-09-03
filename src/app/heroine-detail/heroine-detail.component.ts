@@ -28,6 +28,11 @@ export class HeroineDetailComponent implements OnInit {
       .subscribe(heroine => this.heroine = heroine);
   }
 
+  save(): void {
+    this.heroineService.updateHeroine(this.heroine)
+      .subscribe(() => this.goBack());
+  }
+
   goBack(): void {
     this.location.back();
   }

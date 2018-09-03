@@ -6,13 +6,18 @@ import { MessageService } from './message.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, map, tap} from 'rxjs/operators';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class HeroineService {
 
   // InMemoryDataService.createDb()メソッドの戻り値に与えたキー(heroines)
-  private heroinesUrl = 'api/heroines'
+  private heroinesUrl = 'api/heroines';
 
   constructor(
     private http: HttpClient,
@@ -41,6 +46,14 @@ export class HeroineService {
           tap(_ => this.log(`番号${id}のデータを取得`)),
           catchError(this.handleError<Heroine>(`getHeroine 番号=${id}`))
         );
+  }
+
+  updateHeroine(heroine: Heroine): Observable<any> {
+    return this.http.put(this.heroinesUrl, heroine, httpOptions)
+      .pipe(
+        tap(_ => this.log(`番号${heroine.id}のデータを変更`)),
+        catchError(this.handleError<any>('updateHeroine'))
+      );
   }
 
   private log(message: string) {
